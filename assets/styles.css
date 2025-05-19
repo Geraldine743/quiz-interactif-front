@@ -78,7 +78,33 @@ button:hover{
 }
 
 #result{
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
     margin-top: 20px;
-    font-size: 18px;
     text-align: center;
+    transition: all 0.3s ease;
 }
+
+.excellent{
+    background-color: rgb(48,255,48);
+    color: white;
+    box-shadow: 0 4px 8px rgb(1,38,1);
+    border: 2px solid rgb(2,85,2);
+}
+
+.good{
+    background-color: rgb(227,235,8);
+    color: white;
+    box-shadow: 0 4px 8px rgb(38,38,1);
+    border: 2px solid rgb(75,85,2);
+}
+
+.try-again{
+    background-color: rgb(243,23,20);
+    color: white;
+    box-shadow: 0 4px 8px rgb(38,1,1);
+    border: 2px solid rgb(85,2,2);
+}
+
