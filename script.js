@@ -1,3 +1,4 @@
+//Gestion du quiz
 function calculateScore (callback){
     const correctAnswers = {
         q1:"Paris",
@@ -44,4 +45,18 @@ function submitQuiz(){
             handleMessage(score)
         })
     })
+}
+
+//Simulation inscription (qui sera gérée plus tard en back-end)
+function registerUser(){
+    const username = document.getElementById ("username").value
+    const password = document.getElementById ("password").value
+
+    if(username && password){
+        localStorage.setItem("username",username)
+        localStorage.setItem("password",password)
+        alert("Inscription reussie ! Vous pouvez maintenant vous connecter.")
+    }else{
+        alert("Veuillez remplir tous les champs.")
+    }
 }
