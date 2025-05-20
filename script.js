@@ -85,3 +85,15 @@ function checkAuth(){
         window.location.href = "login.html"
     }
 }
+
+//Au moment de charger la page, on verifier si l'utilisateur est dans le localStorage et on l'affiche sur la page d'accueil
+function showUserMenu (username){
+    const usernameDisplay = document.getElementById("username-display")
+    usernameDisplay.textContent = username
+}
+document.addEventListener("DOMContentLoaded", function(){
+    const storedUsername = localStorage.getItem("username")
+    if(storedUsername){
+        showUserMenu(storedUsername)
+    }
+})
