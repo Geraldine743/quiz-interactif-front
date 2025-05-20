@@ -63,13 +63,16 @@ function showUserMenu (username){
 }
 document.addEventListener("DOMContentLoaded", function(){
     const storedUsername = localStorage.getItem("username")
-    if(storedUsername){
+    const isAuthenticated = localStorage.getItem("isAuthenticated")
+    if(storedUsername && isAuthenticated === "true"){
         showUserMenu(storedUsername)
+    }else{
+        window.location.href = "login.html"
     }
 })
 
 // fonctionnalité deconnexion
 document.getElementById("logout-btn").addEventListener("click", function(){
-    localStorage.removeItem("username")
+    localStorage.setItem("isAuthenticated",false)
     window.location.href = "login.html"
 })
