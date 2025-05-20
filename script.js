@@ -76,3 +76,12 @@ function loginUser(){
         alert("Nom d'utilisateur ou Mot de passe incorrecte.")
     }
 }
+
+//Verification si l'utilisateur est déjà connecter
+function checkAuth(){
+    const isAuthenticated = localStorage.getItem("isAuthenticated")
+    if(isAuthenticated !== "true"){
+        alert("Veuillez vous connecter pour accèder au quizz.")
+        window.location.href = "login.html"
+    }
+}
