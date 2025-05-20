@@ -97,3 +97,9 @@ document.addEventListener("DOMContentLoaded", function(){
         showUserMenu(storedUsername)
     }
 })
+
+// fonctionnalité deconnexion
+document.getElementById("logout-btn").addEventListener("click", function(){
+    localStorage.removeItem("username")
+    window.location.href = "login.html"
+})
