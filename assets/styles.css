@@ -70,6 +70,29 @@ h1{
     font-size: 24px;
 }
 
+.difficulty-selection{
+    margin: 20px 0;
+}
+
+.hidden{
+    display: none;
+}
+
+.difficulty-btn{
+    background: #8e44ad;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.difficulty-btn:hover{
+    background: #e097ff;
+}
+
 .question{
     margin-bottom: 25px;
 }
