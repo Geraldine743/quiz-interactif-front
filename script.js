@@ -66,7 +66,6 @@ document.addEventListener("DOMContentLoaded", function(){
     const isAuthenticated = localStorage.getItem("isAuthenticated")
     if(storedUsername && isAuthenticated === "true"){
         showUserMenu(storedUsername)
-        loadQuestions()
     }else{
         window.location.href = "login.html"
     }
@@ -81,12 +80,23 @@ document.getElementById("logout-btn").addEventListener("click", function(){
 //Recupération des questions
 let currentQuestionIndex = 0
 let questions = []
+let selectedDifficulty = ""
 
-async function loadQuestions() {
+async function loadQuestions(difficulty) {
     try{
         const response = await fetch ("questions.json")
         questions = await response.json()
+        const filteredQuestions = questions.filter((q)=>q.difficulty === difficulty)
+        let selectedDifficulty = difficulty
+        let currentQuestionIndex = 0
     }catch(error){
         console.log("Erreur lors du chargement des questions", error)
     }
 }
+
+document.querySelectorAll(".difficulty-btn").forEach((btn) => {
+    btn.addEventListener("click",function(){
+        const level = btn.getAttribute("data-level")
+        loadQuestions(level)
+    })
+})
