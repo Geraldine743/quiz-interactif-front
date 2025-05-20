@@ -1,17 +1,122 @@
 [
     {
-        "question":"Quelle est la capitale de la France ?",
-        "options":["Paris","Londres","Berlin"],
-        "answer":"Paris"
+        "question": "Quelle est la capitale de la France ?",
+        "options": ["Paris", "Londres", "Berlin"],
+        "answer": "Paris",
+        "difficulty": "facile"
     },
     {
-        "question":"Quelle est la planète la plus proche de la Terre ?",
-        "options":["Mercure","Vénus","Mars"],
-        "answer":"Mercure"
+        "question": "Quel est le plus grand océan du monde ?",
+        "options": ["Atlantique", "Pacifique", "Indien"],
+        "answer": "Pacifique",
+        "difficulty": "facile"
     },
     {
-        "question":"Quelle est la plus grande planète du système solaire ?",
-        "options":["Jupiter","Saturne","Neptune"],
-        "answer":"Jupiter"
+        "question": "Qui a écrit 'Les Misérables' ?",
+        "options": ["Victor Hugo", "Émile Zola", "Gustave Flaubert"],
+        "answer": "Victor Hugo",
+        "difficulty": "moyen"
+    },
+    {
+        "question": "Quelle est la formule chimique de l'eau ?",
+        "options": ["H2O", "CO2", "O2"],
+        "answer": "H2O",
+        "difficulty": "facile"
+    },
+    {
+        "question": "Quel est le pays le plus peuplé du monde ?",
+        "options": ["Inde", "Chine", "États-Unis"],
+        "answer": "Chine",
+        "difficulty": "facile"
+    },
+    {
+        "question": "Quel est l'organe principal de la circulation sanguine ?",
+        "options": ["Cœur", "Poumons", "Foie"],
+        "answer": "Cœur",
+        "difficulty": "moyen"
+    },
+    {
+        "question": "Qui a peint la Joconde ?",
+        "options": ["Vincent van Gogh", "Pablo Picasso", "Léonard de Vinci"],
+        "answer": "Léonard de Vinci",
+        "difficulty": "moyen"
+    },
+    {
+        "question": "Quel est le symbole chimique de l'or ?",
+        "options": ["Au", "Ag", "Fe"],
+        "answer": "Au",
+        "difficulty": "difficile"
+    },
+    {
+        "question": "Quel est le plus long fleuve du monde ?",
+        "options": ["Nil", "Amazonie", "Yangtsé"],
+        "answer": "Amazonie",
+        "difficulty": "difficile"
+    },
+    {
+        "question": "En quelle année a eu lieu la Révolution française ?",
+        "options": ["1789", "1776", "1815"],
+        "answer": "1789",
+        "difficulty": "moyen"
+    },
+    {
+        "question": "Quel est le plus grand désert du monde ?",
+        "options": ["Sahara", "Gobi", "Antarctique"],
+        "answer": "Antarctique",
+        "difficulty": "difficile"
+    },
+    {
+        "question": "Qui a découvert la pénicilline ?",
+        "options": ["Louis Pasteur", "Alexander Fleming", "Marie Curie"],
+        "answer": "Alexander Fleming",
+        "difficulty": "moyen"
+    },
+    {
+        "question": "Quel est l'élément chimique le plus léger ?",
+        "options": ["Hydrogène", "Hélium", "Lithium"],
+        "answer": "Hydrogène",
+        "difficulty": "facile"
+    },
+    {
+        "question": "Quel est le nom de la galaxie dans laquelle nous vivons ?",
+        "options": ["Andromède", "Voie lactée", "Triangulum"],
+        "answer": "Voie lactée",
+        "difficulty": "facile"
+    },
+    {
+        "question": "Qui a écrit 'Roméo et Juliette' ?",
+        "options": ["William Shakespeare", "Molière", "Hugo"],
+        "answer": "William Shakespeare",
+        "difficulty": "moyen"
+    },
+    {
+        "question": "Quel est le plus grand animal terrestre ?",
+        "options": ["Éléphant", "Girafe", "Baleine"],
+        "answer": "Éléphant",
+        "difficulty": "facile"
+    },
+    {
+        "question": "Quel est le principal gaz à effet de serre ?",
+        "options": ["Oxygène", "Dioxyde de carbone", "Azote"],
+        "answer": "Dioxyde de carbone",
+        "difficulty": "moyen"
+    },
+    {
+        "question": "Quel est le nom du premier homme sur la Lune ?",
+        "options": ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin"],
+        "answer": "Neil Armstrong",
+        "difficulty": "facile"
+    },
+    {
+        "question": "Quel est le pays d'origine du sushi ?",
+        "options": ["Chine", "Japon", "Corée"],
+        "answer": "Japon",
+        "difficulty": "facile"
+    },
+    {
+        "question": "Quel est le nom du célèbre détective créé par Arthur Conan Doyle ?",
+        "options": ["Hercule Poirot", "Sherlock Holmes", "Miss Marple"],
+        "answer": "Sherlock Holmes",
+        "difficulty": "moyen"
     }
 ]
