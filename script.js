@@ -89,6 +89,7 @@ async function loadQuestions(difficulty) {
         const filteredQuestions = questions.filter((q)=>q.difficulty === difficulty)
         let selectedDifficulty = difficulty
         let currentQuestionIndex = 0
+        startQuiz()
     }catch(error){
         console.log("Erreur lors du chargement des questions", error)
     }
@@ -100,3 +101,9 @@ document.querySelectorAll(".difficulty-btn").forEach((btn) => {
         loadQuestions(level)
     })
 })
+
+//Demarrer le quiz
+function startQuiz(){
+    document.querySelector(".difficulty-selection").classList.add("hidden")
+    document.getElementById("quiz-container").classList.remove("hidden")
+}
