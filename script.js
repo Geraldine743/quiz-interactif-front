@@ -66,13 +66,27 @@ document.addEventListener("DOMContentLoaded", function(){
     const isAuthenticated = localStorage.getItem("isAuthenticated")
     if(storedUsername && isAuthenticated === "true"){
         showUserMenu(storedUsername)
+        loadQuestions()
     }else{
         window.location.href = "login.html"
     }
 })
 
-// fonctionnalité deconnexion
+//Fonctionnalité deconnexion
 document.getElementById("logout-btn").addEventListener("click", function(){
     localStorage.setItem("isAuthenticated",false)
     window.location.href = "login.html"
 })
+
+//Recupération des questions
+let currentQuestionIndex = 0
+let questions = []
+
+async function loadQuestions() {
+    try{
+        const response = await fetch ("questions.json")
+        questions = await response.json()
+    }catch(error){
+        console.log("Erreur lors du chargement des questions", error)
+    }
+}
