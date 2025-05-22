@@ -3,6 +3,9 @@ let currentQuestionIndex = 0
 let questions = []
 let selectedDifficulty = ""
 let score = 0
+let timer = 0
+const timeLimit = 10
+let timeRemaining = 0 
 
 async function loadQuestions(difficulty) {
     try{
@@ -26,6 +29,7 @@ function startQuiz(){
 
 //Afficher le quiz
 function showQuestion(){
+    startTimer ()
     if(currentQuestionIndex<questions.length){
         const questionData = questions[currentQuestionIndex]
         
@@ -52,10 +56,49 @@ function showQuestion(){
         `
     }else{
         showFinalResult()
+        stopTimer()
     }
 }
 
+function startTimer (){
+    timeRemaining = timeLimit
+    updateProgressBar()
+
+    timer = setInterval(()=>{
+        timeRemaining--
+        updateProgressBar()
+        if(timeRemaining<=0){
+            clearInterval(timer)
+            nextQuestion()
+        }
+    },1000)
+}
+
+function nextQuestion(){
+    currentQuestionIndex++
+    showQuestion()
+}
+
+function updateProgressBar(){
+    const progressBar = document.getElementById("progress-bar")
+    const progress = (timeRemaining/timeLimit)*100
+    progressBar.style.width=`${progress}%`
+
+    if(progress<=30){
+        progressBar.style.backgroundColor="#e74c3c"
+    }else if(progress<=60){
+        progressBar.style.backgroundColor="#f5c400"
+    }else{
+        progressBar.style.backgroundColor="#0dff00"
+    }
+}
+
+function stopTimer(){
+    clearInterval(timer)
+}
+
 function submitAnswer(){
+    stopTimer()
     const form = document.getElementById("quiz-form")
     const selectedAnswer = form.answer.value
     if(!selectedAnswer){
