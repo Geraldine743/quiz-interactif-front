@@ -2,6 +2,7 @@
 let currentQuestionIndex = 0
 let questions = []
 let selectedDifficulty = ""
+let score = 0
 
 async function loadQuestions(difficulty) {
     try{
@@ -38,74 +39,59 @@ function showQuestion(){
                 .map(
                     (option, index) =>
                     `
-                    <label type="radio" name="answer" value="${option}">${option}</label>
+                    <label>
+                    <input type="radio" name="answer" value="${option}">${option}</label>
                     `
                 )
                 .join("")
             }
-            <button type="button" onClick="">Soumettre</button>
+            <button type="button" onclick="submitAnswer()">Soumettre</button>
         </form>
         `
-    }
-}
-
-//Gestion du quiz
-function calculateScore (callback){
-    const correctAnswers = {
-        q1:"Paris",
-        q2:"Mercure",
-        q3:"Jupiter"
-    }
-
-    const form = document.getElementById("quiz-form")
-    let score = 0
-
-    for(const question in correctAnswers){
-        const userAnswer = form[question].value
-        if(userAnswer === correctAnswers[question]){
-            score++
-        }
-    }
-    callback(score)
-}
-
-function displayResult(score, callback){
-    const resultDiv = document.getElementById("result")
-    resultDiv.innerHTML = `Votre score est de ${score}.`
-    callback(score)
-}
-
-function handleMessage(score){
-    const resultDiv = document.getElementById("result")
-    resultDiv.classList.remove("excellent","good","try-again")
-    if(score === 3){
-        resultDiv.innerHTML += "<br> Excellent !"
-        resultDiv.classList.add("excellent")
-    }else if (score === 2){
-        resultDiv.innerHTML += "<br> Bon travail, vous pouvez vous améliorer !"
-        resultDiv.classList.add("good")
     }else{
-        resultDiv.innerHTML += "<br> Vous pouvez faire mieux !"
-        resultDiv.classList.add("try-again")
+        showFinalResult()
     }
 }
 
-function submitQuiz(){
-    calculateScore(function(score){
-        displayResult(score, function(){
-            handleMessage(score)
-        })
+function submitAnswer(){
+    const form = document.getElementById("quiz-form")
+    const selectedAnswer = form.answer.value
+    if(!selectedAnswer){
+        alert("Veuillez selectionner une réponse.")
+        return
+    }
+    checkAnswer(selectedAnswer)
+    currentQuestionIndex++
+    showQuestion()
+}
+
+
+function checkAnswer(selectedAnswer){
+    const currentQuestion = questions[currentQuestionIndex]
+    if(selectedAnswer === currentQuestion.answer){
+        incrementScore()
+    }
+}
+
+function incrementScore(){
+    score++
+}
+
+function showFinalResult(){
+    const quizContainer = document.getElementById("quiz-container")
+    quizContainer.innerHTML=`
+        <div id="result">
+            <p>Votre score final est de ${score} sur ${questions.length}.</p>
+        </div>
+    `
+}
+
+document.querySelectorAll(".difficulty-btn").forEach((btn) => {
+    btn.addEventListener("click",function(){
+        const level = btn.getAttribute("data-level")
+        loadQuestions(level)
     })
-}
-
-//Verification si l'utilisateur est déjà connecter
-function checkAuth(){
-    const isAuthenticated = localStorage.getItem("isAuthenticated")
-    if(isAuthenticated !== "true"){
-        alert("Veuillez vous connecter pour accèder au quizz.")
-        window.location.href = "login.html"
-    }
-}
+})
 
 //Au moment de charger la page, on verifier si l'utilisateur est dans le localStorage et on l'affiche sur la page d'accueil
 function showUserMenu (username){
@@ -122,6 +108,15 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 })
 
+//Verification si l'utilisateur est déjà connecter
+function checkAuth(){
+    const isAuthenticated = localStorage.getItem("isAuthenticated")
+    if(isAuthenticated !== "true"){
+        alert("Veuillez vous connecter pour accèder au quizz.")
+        window.location.href = "login.html"
+    }
+}
+
 //Fonctionnalité deconnexion
 document.getElementById("logout-btn").addEventListener("click", function(){
     localStorage.setItem("isAuthenticated",false)
@@ -130,10 +125,5 @@ document.getElementById("logout-btn").addEventListener("click", function(){
 
 
 
-document.querySelectorAll(".difficulty-btn").forEach((btn) => {
-    btn.addEventListener("click",function(){
-        const level = btn.getAttribute("data-level")
-        loadQuestions(level)
-    })
-})
+
 
