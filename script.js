@@ -1,3 +1,54 @@
+//Recupération des questions
+let currentQuestionIndex = 0
+let questions = []
+let selectedDifficulty = ""
+
+async function loadQuestions(difficulty) {
+    try{
+        const response = await fetch ("questions.json")
+        const allQuestions = await response.json()
+        questions = allQuestions.filter((q)=>q.difficulty === difficulty)
+        selectedDifficulty = difficulty
+        currentQuestionIndex = 0
+        startQuiz()
+    }catch(error){
+        console.log("Erreur lors du chargement des questions", error)
+    }
+}
+
+//Demarrer le quiz
+function startQuiz(){
+    document.querySelector(".difficulty-selection").classList.add("hidden")
+    document.getElementById("quiz-container").classList.remove("hidden")
+    showQuestion()
+}
+
+//Afficher le quiz
+function showQuestion(){
+    if(currentQuestionIndex<questions.length){
+        const questionData = questions[currentQuestionIndex]
+        
+        const questionContainer = document.getElementById("quiz-container")
+        questionContainer.innerHTML = `
+        <div class="question">
+            <p>${questionData.question}</p>
+        </div>
+        <form id="quiz-form">
+            ${questionData.options
+                .map(
+                    (option, index) =>
+                    `
+                    <label type="radio" name="answer" value="${option}">${option}</label>
+                    `
+                )
+                .join("")
+            }
+            <button type="button" onClick="">Soumettre</button>
+        </form>
+        `
+    }
+}
+
 //Gestion du quiz
 function calculateScore (callback){
     const correctAnswers = {
@@ -77,23 +128,7 @@ document.getElementById("logout-btn").addEventListener("click", function(){
     window.location.href = "login.html"
 })
 
-//Recupération des questions
-let currentQuestionIndex = 0
-let questions = []
-let selectedDifficulty = ""
 
-async function loadQuestions(difficulty) {
-    try{
-        const response = await fetch ("questions.json")
-        questions = await response.json()
-        const filteredQuestions = questions.filter((q)=>q.difficulty === difficulty)
-        let selectedDifficulty = difficulty
-        let currentQuestionIndex = 0
-        startQuiz()
-    }catch(error){
-        console.log("Erreur lors du chargement des questions", error)
-    }
-}
 
 document.querySelectorAll(".difficulty-btn").forEach((btn) => {
     btn.addEventListener("click",function(){
@@ -102,8 +137,3 @@ document.querySelectorAll(".difficulty-btn").forEach((btn) => {
     })
 })
 
-//Demarrer le quiz
-function startQuiz(){
-    document.querySelector(".difficulty-selection").classList.add("hidden")
-    document.getElementById("quiz-container").classList.remove("hidden")
-}
