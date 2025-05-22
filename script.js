@@ -39,8 +39,10 @@ function showQuestion(){
                 .map(
                     (option, index) =>
                     `
-                    <label>
-                    <input type="radio" name="answer" value="${option}">${option}</label>
+                    <label class="option">
+                    <input type="radio" name="answer" value="${option}">
+                    <span class="custom-radio"></span>
+                    ${option}</label>
                     `
                 )
                 .join("")
